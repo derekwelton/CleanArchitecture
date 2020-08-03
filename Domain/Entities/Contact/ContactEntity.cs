@@ -8,6 +8,7 @@ namespace Domain.Entities.Contact
         public int Contact_ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Email { get; set; }
         public string Notes { get; set; }
         public ContactType Type { get; set; }
         public IList<ContactAddressEntity> Addresses { get; private set; } = new List<ContactAddressEntity>();

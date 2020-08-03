@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -19,12 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contact\Commands\DeleteContact\" />
-    <Folder Include="Contact\Commands\CreateContactAddress\" />
-    <Folder Include="Contact\Commands\DeleteContactAddress\" />
-    <Folder Include="Contact\Commands\CreateContactPhoneNumber\" />
-    <Folder Include="Contact\Commands\DeleteContactPhoneNumber\" />
-    <Folder Include="Contact\Queries\" />
+    <Folder Include="Modules\Contact\Commands\DeleteContact\" />
+    <Folder Include="Modules\Contact\Commands\CreateContactAddress\" />
+    <Folder Include="Modules\Contact\Commands\DeleteContactAddress\" />
+    <Folder Include="Modules\Contact\Commands\CreateContactPhoneNumber\" />
+    <Folder Include="Modules\Contact\Commands\DeleteContactPhoneNumber\" />
+    <Folder Include="Modules\Contact\Queries\" />
   </ItemGroup>
 
 </Project>

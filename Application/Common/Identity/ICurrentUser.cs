@@ -1,6 +1,6 @@
 ﻿namespace Application.Common.Identity
 {
-    public interface ICurrentUserService
+    public interface ICurrentUser
     {
         string UserId { get; }
     }

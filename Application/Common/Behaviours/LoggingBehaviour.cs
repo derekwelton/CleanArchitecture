@@ -9,25 +9,26 @@ namespace Application.Common.Behaviours
     public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest>
     {
         private readonly ILogger _logger;
-        private readonly ICurrentUserService _currentUserService;
-        private readonly IIdentityService _identityService;
+        private readonly ICurrentUser _currentUser;
+        private readonly IIdentityRepository _identityRepository;
 
-        public LoggingBehaviour(ILogger<TRequest> logger, ICurrentUserService currentUserService, IIdentityService identityService)
+        public LoggingBehaviour(ILogger<TRequest> logger, ICurrentUser currentUser, IIdentityRepository identityRepository)
         {
             _logger = logger;
-            _currentUserService = currentUserService;
-            _identityService = identityService;
+            _currentUser = currentUser;
+            _identityRepository = identityRepository;
         }
 
         public async Task Process(TRequest request, CancellationToken cancellationToken)
         {
             var requestName = typeof(TRequest).Name;
-            var userId = _currentUserService.UserId ?? string.Empty;
+            var userId = _currentUser.UserId ?? string.Empty;
             string userName = string.Empty;
 
             if (!string.IsNullOrEmpty(userId))
             {
-                userName = await _identityService.GetUserNameAsync(userId);
+                var user = await _identityRepository.FindByIdAsync(userId);
+                userName = user.UserName;
             }
 
             _logger.LogInformation("CleanArchitecture Request: {Name} {@UserId} {@UserName} {@Request}",
